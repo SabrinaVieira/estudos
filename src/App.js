@@ -10,7 +10,7 @@ class App extends Component {
 
   componentWillMount() {
     axios
-      .get("https://swapi.co/api/people/1", {
+      .get("https://swapi.co/api/people/12", {
         responseType: "json"
       })
       .then(informacoes => this.setState({ info: informacoes.data }))
@@ -19,7 +19,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+    <div class="container">
+      <div class="col-xl-12">
         <p>teste contador</p>
         {this.state.contador}
         <br />
@@ -40,7 +41,12 @@ class App extends Component {
 
         <div class="card">
           <div class="card-body">
-            <p>{this.state.info.name}</p>
+            <div class="alert alert-dark" role="alert">
+              <p>{this.state.info.name}</p>
+              <p>{this.state.info.height}</p>
+              <p>{this.state.info.mass}</p>
+              <p>{this.state.info.hair_color}</p>
+            </div>
           </div>
         </div>
 
@@ -52,6 +58,7 @@ class App extends Component {
           Adicionar +1
         </button>
         {/* {JSON.stringify(this.state.info)} */}
+      </div>
       </div>
     );
   }
